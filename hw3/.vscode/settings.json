@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "array": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "stdexcept": "cpp",
+        "istream": "cpp",
+        "iostream": "cpp",
+        "algorithm": "cpp",
+        "vector": "cpp",
+        "typeinfo": "cpp",
+        "*.tcc": "cpp",
+        "functional": "cpp",
+        "tuple": "cpp",
+        "limits": "cpp"
+    }
+}
