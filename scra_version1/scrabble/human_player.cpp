@@ -21,7 +21,14 @@ inline string &to_upper(string &str) {
   return str;
 }
 
-// return and validate move from human players
+
+/*
+TODO:
+  return a validated move from human players
+
+NOTE:
+  - if something went wrong, ans will have size 0
+*/
 Move HumanPlayer::get_move(const Board &board,
                            const Dictionary &dictionary) const {
   while (true) {
@@ -35,24 +42,31 @@ Move HumanPlayer::get_move(const Board &board,
 
     if (input == "PASS") {
       return Move();
-    } else if (input.substr(0, 8) == "EXCHANGE") {
+    }
+    else if (input.substr(0, 8) == "EXCHANGE") {
       vector<TileKind> tk = parse_tiles(input);
-      // if something went wrong, ans will have size 0,
       if (tk.size() != 0)
         return Move(tk);
-    } else if (input.substr(0, 5) == "PLACE") {
+    }
+    else if (input.substr(0, 5) == "PLACE") {
       Move ans = parse_move(input);
       ans.column -= 1;
       ans.row -= 1;
+      
+      // signal something went wrong with their command
       if (ans.kind == MoveKind::PASS)
-        continue; // this is to signal something went wrong with their command
-      PlaceResult pr = board.test_place(
-          ans); // see if the place command can work on the board
+        continue;
+      
+      // see if the place command can work on the board
+      PlaceResult pr = board.test_place(ans); 
       if (!pr.valid) {
         cout << pr.error << endl;
         continue;
       }
-      bool known_words = true; // see if all words formed are legal
+
+      // see if all words formed are legal
+      bool known_words = true; 
+
       for (string s : pr.words) {
         if (!dictionary.is_word(s)) {
           cout << "One of the newly formed words is ILLEGAL: " << s << endl;
@@ -60,15 +74,24 @@ Move HumanPlayer::get_move(const Board &board,
           break;
         }
       }
+
       if (known_words)
         return ans;
-    } else {
+    }
+    else {
       cout << "Invalid move inputted!" << endl;
     }
   }
 }
 
-// EXCHANGE helper function E.G. EXCHANGE EEE
+
+/*
+TODO:
+  implement EXCHANGE helper function
+
+NOTE:
+  - EXCHANGE EEE
+*/
 vector<TileKind> HumanPlayer::parse_tiles(string &letters) const {
   stringstream ss(letters);
   string temp;
@@ -95,6 +118,7 @@ vector<TileKind> HumanPlayer::parse_tiles(string &letters) const {
       ex[temp[i]] = 1;
     }
   }
+
   // look up all tile and see if it exist in hand and has enough letters
 
   for (auto i = ex.begin(); i != ex.end(); i++) {
@@ -104,19 +128,20 @@ vector<TileKind> HumanPlayer::parse_tiles(string &letters) const {
       cout << "Invalid tiles inputted: not enough letters in your hand" << endl;
       return empty;
     }
+
   }
   return exchanged;
 }
 
-// MOVE helper function, E.G. PLACE | 7 9 VO?LA
+/*
+TODO:
+  implement MOVE helper function
+
+NOTE:
+  - PLACE | 7 9 VO?LA
+  - wildcard'S' true value is stored in "assigned"
+*/
 Move HumanPlayer::parse_move(string &move_string) const {
-  // Preparation
-  // stringstream ss to help parse thru move_String
-  // temp to hold the words
-  // vector placed to store cards and wildcard (whose true value is stored in
-  // its member "assigned")
-  // size_t row, col to store information from move_string
-  // direction dir to store information from move_string
   stringstream ss(move_string);
   string temp;
   ss >> temp; // temp = "PLACE"
@@ -145,12 +170,15 @@ Move HumanPlayer::parse_move(string &move_string) const {
     cerr << "Invalid row and col inputted" << endl;
     return Move();
   }
+
   // Tiles
-  // string nt is temp without what ? represents but also disguised as EXCHANGE
-  // vector wilds is to orderly record what ? represents
-  // size_t i is index for traversing thru temp
-  // size_t j is index for traversing thru wilds; max(j) + 1 should be
-  // wilds.size()
+
+  // string nt:     "EXCHANGE " + without what ? represents
+  // vector wilds:  to orderly record what ? represents
+  // size_t i:      index for traversing thru temp
+  // size_t j:      index for traversing thru wilds; 
+  //    max(j) + 1: should be wilds.size()
+
   ss >> temp;
   vector<char> wilds;
   string nt = "EXCHANGE ";
@@ -164,6 +192,7 @@ Move HumanPlayer::parse_move(string &move_string) const {
     }
   }
   placed = parse_tiles(nt);
+
   // see if anything went wrong and return accordingly
   if (placed.size() != 0) {
     // assign the correct letter for the wildcards
@@ -179,6 +208,7 @@ Move HumanPlayer::parse_move(string &move_string) const {
           break;
       }
     }
+    
     return Move(placed, row, col, dir);
   }
 

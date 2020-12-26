@@ -221,6 +221,7 @@ TEST_F(PlaceTest, place_word_sharing_middle_letter) {
 	t1.push_back(TileKind('O', 1));
 	Move m1 = Move(t1, 7, 7, Direction::ACROSS);
 	b.place(m1);
+	//b.print(std::cout);
 
 	vector<TileKind> t2;
 	t2.push_back(TileKind('I', 1));
@@ -272,6 +273,7 @@ TEST_F(PlaceTest, place_word_extend_front) {
 	t1.push_back(TileKind('R', 1));
 	Move m1 = Move(t1, 7, 7, Direction::ACROSS);
 	b.place(m1);
+	
 
 	vector<TileKind> t2;
 	t2.push_back(TileKind('G', 1));
@@ -381,7 +383,7 @@ TEST_F(PlaceTest, place_word_make_two) {
 	Move m4 = Move(t4, 10, 7, Direction::ACROSS);
 	PlaceResult result = b.place(m4);
 
-	//b.print(std::cout);
+	// b.print(std::cout);
 	
 	// HIDE + ENTRY = 10
 	EXPECT_EQ(result.points, 9);
@@ -405,7 +407,7 @@ TEST_F(PlaceTest, place_word_sharing_lose_mult) {
 	Move m2 = Move(t2, 9, 8, Direction::ACROSS);
 	PlaceResult result = b.place(m2);
 
-	//b.print(std::cout);
+	b.print(std::cout);
 
 	// (1+1+1+1), should get points for previously places h
 	EXPECT_EQ(result.points, 3);

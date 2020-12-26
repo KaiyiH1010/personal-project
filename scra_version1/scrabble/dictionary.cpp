@@ -12,6 +12,10 @@ string lower(string str) {
   return str;
 }
 
+/*
+TODO: 
+  complete the dictionary (a set) in lower-case
+*/
 Dictionary Dictionary::read(const std::string &file_path) {
   ifstream file(file_path);
   if (!file) {
@@ -21,8 +25,6 @@ Dictionary Dictionary::read(const std::string &file_path) {
   std::string word;
   Dictionary dictionary;
 
-  // TODO: complete this. Words in dictionary should all be lowercase.
-  // read and add words to the dictionary
   while (!file.fail()) {
     file >> word;
     for (size_t i = 0; i < word.size(); i++) {
@@ -30,7 +32,7 @@ Dictionary Dictionary::read(const std::string &file_path) {
     }
     dictionary.words.insert(word);
   }
-  // return the dictionary
+  
   return dictionary;
 }
 
