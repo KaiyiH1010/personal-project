@@ -11,7 +11,6 @@ You may access and use the website via [link](http://303.itpwebdev.com/~kaiyihua
 - [Sign In](#Sign-In)
 - [Create Account](#Create-Account)
 - [Home](#Home)
-<!-- - [Edit](#Edit) -->
 - [Profile](#Profile)
 - [Day/Night Mode](#Day/Night-Mode)
 
@@ -25,9 +24,6 @@ You may access and use the website via [link](http://303.itpwebdev.com/~kaiyihua
 ## Home
 - Visualization of the schedule
 - Change color for each class
-<!-- 
-## Edit
--  -->
 
 ## Profile
 - Change email
