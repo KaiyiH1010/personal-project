@@ -4,7 +4,11 @@
 
 Welcome to my very first web project.
 
-You may access and use the website via [link](http://303.itpwebdev.com/~kaiyihua/final_project/signin.php)
+You may access and use the website via this [link](http://303.itpwebdev.com/~kaiyihua/final_project/signin.php)
+
+```
+NOTE: if you are using this website on your mobile, the mode change button will be located on profile page.
+```
 
 ## Updated Features
 
@@ -12,7 +16,6 @@ You may access and use the website via [link](http://303.itpwebdev.com/~kaiyihua
 - [Create Account](#Create-Account)
 - [Home](#Home)
 - [Profile](#Profile)
-- [Day/Night Mode](#Day/Night-Mode)
 
 ## Sign In
 - Forget password
@@ -27,9 +30,6 @@ You may access and use the website via [link](http://303.itpwebdev.com/~kaiyihua
 
 ## Profile
 - Change email
-
-### Day/Night Mode
-- Mobile version may access the mode change button in profile page
 
 
 <!-- This module depends upon a knowledge of [Markdown]().
