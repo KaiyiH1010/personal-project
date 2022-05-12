@@ -1,6 +1,5 @@
 # Coursio - Your Course Table Generator
 
-[![license](https://img.shields.io/github/license/:user/:repo.svg)](LICENSE)
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
 Welcome to my very first web project.
@@ -12,7 +11,7 @@ You may access and use the website via [link](http://303.itpwebdev.com/~kaiyihua
 - [Sign In](#Sign-In)
 - [Create Account](#Create-Account)
 - [Home](#Home)
-- [Edit](#Edit)
+<!-- - [Edit](#Edit) -->
 - [Profile](#Profile)
 - [Day/Night Mode](#Day/Night-Mode)
 
@@ -24,18 +23,20 @@ You may access and use the website via [link](http://303.itpwebdev.com/~kaiyihua
 - Verify email
 
 ## Home
-- 
-
+- Visualization of the schedule
+- Change color for each class
+<!-- 
 ## Edit
-- 
+-  -->
 
 ## Profile
 - Change email
 
 ### Day/Night Mode
+- Mobile version may access the mode change button in profile page
 
 
-This module depends upon a knowledge of [Markdown]().
+<!-- This module depends upon a knowledge of [Markdown]().
 
 ```
 ```
@@ -70,3 +71,4 @@ Small note: If editing the Readme, please conform to the [standard-readme](https
 ## License
 
 [MIT © Richard McRichface.](../LICENSE)
+ -->
